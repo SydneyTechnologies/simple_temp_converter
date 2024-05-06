@@ -10,4 +10,4 @@ This is a simple API built with FastAPI that takes in an input string as a query
 
 ### RUN
 
-If you wish to use this simple API to test something feel free to clone and run it locally on your computer or you can access the application over at this link
+If you wish to use this simple API to test something feel free to clone and run it locally on your computer or you can access the application over at this [link](https://simpletempconverter.up.railway.app/). Explore the API's documentation at https://simpletempconverter.up.railway.app/docs
