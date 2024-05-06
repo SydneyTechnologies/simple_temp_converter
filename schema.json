@@ -1,0 +1,121 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Temperature Converter", "version": "0.1.0" },
+
+  "servers": [{ "url": "https://simpletempconverter.up.railway.app/" }],
+  "paths": {
+    "/temperature": {
+      "get": {
+        "summary": "Read Temperature Type, Celsius or Fahrenheit",
+        "operationId": "Read Temperature Type",
+        "parameters": [
+          {
+            "name": "input",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "string", "title": "Input" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tofahrenheit": {
+      "get": {
+        "summary": "Convert To Celcius Temperature to Fahrenheit",
+        "operationId": "Convert To Fahrenheit",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "number", "title": "Value" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tocelsius": {
+      "get": {
+        "summary": "Convert Fahrenheit Temperature To Celsius",
+        "operationId": "Convert To Celsius",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "required": true,
+            "schema": { "type": "number", "title": "Value" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": { "$ref": "#/components/schemas/ValidationError" },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": { "type": "string", "title": "Message" },
+          "type": { "type": "string", "title": "Error Type" }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      }
+    }
+  }
+}
