@@ -47,7 +47,7 @@ def convert_to_celsius(value: float):
     return {"result": (value - 32) * 5/9}
 
 
-@app.get("/image", name="image")
+@app.get("/image")
 def get_temp_image(value: float, temp_type: str):
     image_location = ""
     if (temp_type.lower() == "f"):
