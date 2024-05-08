@@ -5,7 +5,7 @@ from models import Report
 from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import RedirectResponse, HTMLResponse
+from fastapi.responses import RedirectResponse, HTMLResponse, FileResponse
 
 
 app = FastAPI()
@@ -67,7 +67,9 @@ def get_temp_image(value: float, temp_type: str):
 
     url = f"static/images/{image_location}"
     # logging.debug(f"Image location: {url}")
-    return RedirectResponse(url=url)
+    base_path = os.path.dirname(os.path.abspath(__file__))  
+    image_path = os.path.join(base_path, url)
+    return FileResponse(image_path)
     
 
 @app.post("/report", response_class=HTMLResponse)
