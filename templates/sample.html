@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1 {
+            color: #0056b3;
+            text-align: center;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Report</h1>
+    <p>Temperature in Celsius: {{ celsius|default('not specified') }}</p>
+    <p>Temperature in Fahrenheit: {{ fahrenheit|default('not specified') }}</p>
+    <p>{{ temperature_joke|default('No joke today!') }}</p>
+    <img src="/image?value={{ celsius }}&temp_type=c" alt="Temperature Image">
+
+</body>
+
+</html>

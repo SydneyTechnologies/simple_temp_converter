@@ -2,86 +2,117 @@
   "openapi": "3.1.0",
   "info": { "title": "Temperature Converter", "version": "0.1.0" },
 
-  "servers": [{ "url": "https://simpletempconverter.up.railway.app/" }],
+  "servers": [{ "url": "https://simpletempconverter.up.railway.app" }],
   "paths": {
     "/temperature": {
       "get": {
-        "summary": "Read Temperature Type, Celsius or Fahrenheit",
-        "operationId": "Read Temperature Type",
+        "summary": "Read Temperature",
+        "operationId": "ReadTemperatureType",
         "parameters": [
           {
             "name": "input",
             "in": "query",
             "required": true,
-            "schema": { "type": "string", "title": "Input" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
-              }
+            "schema": {
+              "type": "string",
+              "title": "Input"
             }
           }
-        }
+        ]
       }
     },
     "/tofahrenheit": {
       "get": {
-        "summary": "Convert To Celcius Temperature to Fahrenheit",
-        "operationId": "Convert To Fahrenheit",
+        "summary": "Convert To Fahrenheit",
+        "operationId": "CelsiusToFahrenheit",
         "parameters": [
           {
             "name": "value",
             "in": "query",
             "required": true,
-            "schema": { "type": "number", "title": "Value" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
-              }
+            "schema": {
+              "type": "number",
+              "title": "Value"
             }
           }
-        }
+        ]
       }
     },
     "/tocelsius": {
       "get": {
-        "summary": "Convert Fahrenheit Temperature To Celsius",
-        "operationId": "Convert To Celsius",
+        "summary": "Convert To Celsius",
+        "operationId": "FahrenheitToCelsius",
         "parameters": [
           {
             "name": "value",
             "in": "query",
             "required": true,
-            "schema": { "type": "number", "title": "Value" }
+            "schema": {
+              "type": "number",
+              "title": "Value"
+            }
           }
-        ],
+        ]
+      }
+    },
+    "/image": {
+      "get": {
+        "summary": "Get Image Representing the Input Temperature",
+        "operationId": "GetTemperatureImage",
+        "parameters": [
+          {
+            "name": "value",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "title": "Value"
+            }
+          },
+          {
+            "name": "temp_type",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Temp Type"
+            }
+          }
+        ]
+      }
+    },
+    "/report": {
+      "post": {
+        "summary": "Get Temperature Conversion Report",
+        "operationId": "GetTemperatureReport",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Report"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
-            "content": { "application/json": { "schema": {} } }
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
           },
           "422": {
             "description": "Validation Error",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
               }
             }
           }
@@ -94,7 +125,9 @@
       "HTTPValidationError": {
         "properties": {
           "detail": {
-            "items": { "$ref": "#/components/schemas/ValidationError" },
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
             "type": "array",
             "title": "Detail"
           }
@@ -102,15 +135,53 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
+      "Report": {
+        "properties": {
+          "joke": {
+            "type": "string",
+            "title": "Joke"
+          },
+          "image": {
+            "type": "string",
+            "title": "Image"
+          },
+          "celsius": {
+            "type": "number",
+            "title": "Celsius"
+          },
+          "fahrenheit": {
+            "type": "number",
+            "title": "Fahrenheit"
+          }
+        },
+        "type": "object",
+        "required": ["joke", "image", "celsius", "fahrenheit"],
+        "title": "Report"
+      },
       "ValidationError": {
         "properties": {
           "loc": {
-            "items": { "anyOf": [{ "type": "string" }, { "type": "integer" }] },
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
             "type": "array",
             "title": "Location"
           },
-          "msg": { "type": "string", "title": "Message" },
-          "type": { "type": "string", "title": "Error Type" }
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
         },
         "type": "object",
         "required": ["loc", "msg", "type"],
