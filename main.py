@@ -73,6 +73,7 @@ def get_temp_image(request: Request, value: float, temp_type: str):
 @app.get("/get_report")
 def get_report(request: Request, joke: str, celsius: float, fahrenheit: float):
     url = request.base_url
+    joke = joke.replace(" ", "%20")
     report_url = f"{url}report?joke={joke}&celsius={celsius}&fahrenheit={fahrenheit}"
     return {"report_url": report_url}
 
@@ -80,6 +81,7 @@ def get_report(request: Request, joke: str, celsius: float, fahrenheit: float):
 
 @app.get("/report", response_class=HTMLResponse)
 def get_report(request: Request, joke: str, celsius: float, fahrenheit: float):
+    joke = joke.replace("%20", " ")
     data = Report(joke=joke, celsius=celsius, fahrenheit=fahrenheit)
     return templates.TemplateResponse(request=request, name="sample.html", context=data.__dict__)
 
