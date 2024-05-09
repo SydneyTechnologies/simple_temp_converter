@@ -2,7 +2,7 @@ import re
 import os
 import logging
 from models import Report
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, Query
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse, HTMLResponse, FileResponse
@@ -70,8 +70,17 @@ def get_temp_image(request: Request, value: float, temp_type: str):
     return {"image": image_url}
     
 
-@app.post("/report", response_class=HTMLResponse)
-def get_report(request: Request, data: Report):
+@app.get("/get_report", response_class=HTMLResponse)
+def get_report(request: Request, joke: str, image: str, celsius: float, fahrenheit: float):
+    data = Report(joke=joke, image=image, celsius=celsius, fahrenheit=fahrenheit)
+    url = request.url.replace("/get_report", "/report")
+    return {"report_url": url}
+
+
+
+@app.get("/report", response_class=HTMLResponse)
+def get_report(request: Request, joke: str, image: str, celsius: float, fahrenheit: float):
+    data = Report(joke=joke, image=image, celsius=celsius, fahrenheit=fahrenheit)
     return templates.TemplateResponse(request=request, name="sample.html", context=data.__dict__)
 
 

@@ -81,20 +81,49 @@
         ]
       }
     },
-    "/report": {
-      "post": {
-        "summary": "Get Temperature Conversion Report",
+
+    "/get_report": {
+      "get": {
+        "summary": "Get Temperature Report",
         "operationId": "GetTemperatureReport",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Report"
-              }
+        "parameters": [
+          {
+            "name": "joke",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Joke"
             }
           },
-          "required": true
-        },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Image"
+            }
+          },
+          {
+            "name": "celsius",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "title": "Celsius"
+            }
+          },
+          {
+            "name": "fahrenheit",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "title": "Fahrenheit"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful Response",
