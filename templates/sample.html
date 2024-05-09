@@ -39,8 +39,10 @@
     <p>Temperature in Celsius: {{ celsius|default('not specified') }}</p>
     <p>Temperature in Fahrenheit: {{ fahrenheit|default('not specified') }}</p>
     <p>{{ joke|default('No joke today!') }}</p>
-    <img src="https://simpletempconverter.up.railway.app/image?value={{ celsius }}&temp_type=c" alt="Temperature Image">
+    <img src="https://simpletempconverter.up.railway.app/image?value={{ celsius }}&temp_type=c&render=True"
+        alt="Temperature Image">
 
 </body>
+
 
 </html>
