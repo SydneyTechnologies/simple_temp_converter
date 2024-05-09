@@ -48,7 +48,7 @@ def convert_to_celsius(value: float):
 
 
 @app.get("/image")
-def get_temp_image(value: float, temp_type: str):
+def get_temp_image(request: Request, value: float, temp_type: str):
     image_location = ""
     if (temp_type.lower() == "f"):
         if value >= 80:
@@ -65,11 +65,9 @@ def get_temp_image(value: float, temp_type: str):
         elif value <= 20:
             image_location = "cold.webp"
 
-    url = f"static/images/{image_location}"
-    # logging.debug(f"Image location: {url}")
-    base_path = os.path.dirname(os.path.abspath(__file__))  
-    image_path = os.path.join(base_path, url)
-    return FileResponse(image_path)
+    base_url = request.base_url
+    image_url= f"{base_url}static/images/{image_location}"
+    return {"image": image_url}
     
 
 @app.post("/report", response_class=HTMLResponse)
