@@ -68,7 +68,7 @@ def get_temp_image(request: Request, value: float, temp_type: str, render: bool 
     base_url = request.base_url
     image_url= f"{base_url}static/images/{image_location}"
     if render:
-        return image_url
+        return RedirectResponse(image_url)
     else:
         return {"image": image_url}
     
