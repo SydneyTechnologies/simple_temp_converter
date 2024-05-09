@@ -97,15 +97,6 @@
             }
           },
           {
-            "name": "image",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Image"
-            }
-          },
-          {
             "name": "celsius",
             "in": "query",
             "required": true,
