@@ -70,11 +70,11 @@ def get_temp_image(request: Request, value: float, temp_type: str):
     return {"image": image_url}
     
 
-@app.get("/get_report", response_class=HTMLResponse)
+@app.get("/get_report")
 def get_report(request: Request, joke: str, celsius: float, fahrenheit: float):
-    data = Report(joke=joke, celsius=celsius, fahrenheit=fahrenheit)
-    url = request.url.replace("/get_report", "/report")
-    return {"report_url": url}
+    url = request.base_url
+    report_url = f"{url}report?joke={joke}&celsius={celsius}&fahrenheit={fahrenheit}"
+    return {"report_url": report_url}
 
 
 
