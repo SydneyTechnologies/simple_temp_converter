@@ -89,11 +89,21 @@
         "parameters": [
           {
             "name": "joke",
+            "description": "A temperature joke that is relevant to the given temperature",
             "in": "query",
             "required": true,
             "schema": {
               "type": "string",
               "title": "Joke"
+            }
+          },
+          {
+            "name": "image",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Image"
             }
           },
           {

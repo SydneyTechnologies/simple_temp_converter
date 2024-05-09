@@ -38,7 +38,7 @@
     <h1>Report</h1>
     <p>Temperature in Celsius: {{ celsius|default('not specified') }}</p>
     <p>Temperature in Fahrenheit: {{ fahrenheit|default('not specified') }}</p>
-    <p>{{ temperature_joke|default('No joke today!') }}</p>
+    <p>{{ joke|default('No joke today!') }}</p>
     <img src="/image?value={{ celsius }}&temp_type=c" alt="Temperature Image">
 
 </body>
