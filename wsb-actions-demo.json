@@ -1,0 +1,158 @@
+{
+  "openapi": "3.1.0",
+  "info": { "title": "Website Builder", "version": "0.1.0" },
+
+  "servers": [{ "url": "https://simpletempconverter.up.railway.app" }],
+  "paths": {
+    "/build": {
+      "post": {
+        "summary": "Create website on website builder platform",
+        "operationId": "GenWebsite",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/WsbData" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "Report": {
+        "properties": {
+          "joke": {
+            "type": "string",
+            "title": "Joke"
+          },
+          "image": {
+            "type": "string",
+            "title": "Image"
+          },
+          "celsius": {
+            "type": "number",
+            "title": "Celsius"
+          },
+          "fahrenheit": {
+            "type": "number",
+            "title": "Fahrenheit"
+          }
+        },
+        "type": "object",
+        "required": ["joke", "image", "celsius", "fahrenheit"],
+        "title": "Report"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      },
+      "WsbData": {
+        "properties": {
+          "websiteTitle": { "type": "string", "title": "Websitetitle" },
+          "gmbKey": { "type": "string", "title": "Gmbkey" },
+          "concept": { "type": "string", "title": "Concept" },
+          "country": { "type": "string", "title": "Country", "default": "" },
+          "city": { "type": "string", "title": "City", "default": "" },
+          "aboutKeywords": {
+            "type": "string",
+            "title": "Aboutkeywords",
+            "default": ""
+          },
+          "language": {
+            "type": "string",
+            "title": "Language",
+            "default": "en_gb"
+          },
+          "defaultColor": {
+            "type": "string",
+            "title": "Defaultcolor",
+            "default": "rustic"
+          },
+          "pronouns": {
+            "type": "string",
+            "title": "Pronouns",
+            "default": "We"
+          },
+          "optionSet": {
+            "items": { "type": "string" },
+            "type": "array",
+            "title": "Optionset",
+            "default": []
+          },
+          "additionalData": {
+            "type": "object",
+            "title": "Additionaldata",
+            "default": {}
+          },
+          "submitCount": {
+            "type": "integer",
+            "title": "Submitcount",
+            "default": 1
+          },
+          "addShopSection": {
+            "type": "boolean",
+            "title": "Addshopsection",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": ["websiteTitle", "gmbKey", "concept"],
+        "title": "WsbData"
+      }
+    }
+  }
+}

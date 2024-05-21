@@ -90,7 +90,7 @@ def get_report(request: Request, joke: str, celsius: float, fahrenheit: float):
     return templates.TemplateResponse(request=request, name="sample.html", context=data.__dict__)
 
 
-@app.post("/test")
+@app.post("/build")
 def test(request: Request, data: WsbData ):
     previewLink = f"{request.base_url}static/images/preview.png"
     gptResponse = {
