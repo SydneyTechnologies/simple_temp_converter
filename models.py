@@ -16,7 +16,7 @@ class WsbData(BaseModel):
     language: str = "en_gb"
     defaultColor: str = "rustic"
     pronouns: str = "We"
-    optionSet: list[str] = []
+    optionSet: list = []
     additionalData: dict = {}
 
     # constants
