@@ -148,6 +148,35 @@
           }
         }
       }
+    },
+
+    "/test": {
+      "post": {
+        "summary": "Test",
+        "operationId": "test_test_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/WsbData" }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": { "application/json": { "schema": {} } }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/HTTPValidationError" }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -216,6 +245,67 @@
         "type": "object",
         "required": ["loc", "msg", "type"],
         "title": "ValidationError"
+      },
+      "WsbData": {
+        "properties": {
+          "websiteTitle": {
+            "type": "string",
+            "title": "Websitetitle",
+            "default": "Mandy's Website"
+          },
+          "country": { "type": "string", "title": "Country", "default": "" },
+          "city": { "type": "string", "title": "City", "default": "" },
+          "gmbKey": { "type": "string", "title": "Gmbkey" },
+          "group": { "type": "boolean", "title": "Group", "default": true },
+          "concept": { "type": "string", "title": "Concept" },
+          "aboutKeywords": { "type": "string", "title": "Aboutkeywords" },
+          "optionSet": {
+            "items": {},
+            "type": "array",
+            "title": "Optionset",
+            "default": []
+          },
+          "submitCount": {
+            "type": "integer",
+            "title": "Submitcount",
+            "default": 1
+          },
+          "defaultColor": {
+            "type": "object",
+            "title": "Defaultcolor",
+            "default": {
+              "accentColor": [
+                "HSL",
+                0.01486199575371549,
+                0.6460905349794239,
+                0.5235294117647059,
+                1
+              ],
+              "mainColor": ["HSL", 0, 0, 0.9725490196078431, 1],
+              "whiteColor": ["HSL", 0, 0, 1, 1],
+              "blackColor": ["HSL", 0.5645, 0, 0.23529411764705882, 1]
+            }
+          },
+          "addressData": {
+            "type": "object",
+            "title": "Addressdata",
+            "default": {}
+          },
+          "language": {
+            "type": "string",
+            "title": "Language",
+            "default": "en_gb"
+          },
+          "additionalData": { "type": "object", "title": "Additionaldata" },
+          "addShopSection": {
+            "type": "boolean",
+            "title": "Addshopsection",
+            "default": false
+          }
+        },
+        "type": "object",
+        "required": ["gmbKey", "concept", "aboutKeywords", "additionalData"],
+        "title": "WsbData"
       }
     }
   }

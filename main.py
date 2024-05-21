@@ -1,11 +1,12 @@
 import re
 import os
 import logging
-from models import Report
-from fastapi import FastAPI, Request, Query
+from models import Report, WsbData
+from fastapi import FastAPI, Request, Query, Body
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse, HTMLResponse, FileResponse
+
 
 
 app = FastAPI()
@@ -89,3 +90,11 @@ def get_report(request: Request, joke: str, celsius: float, fahrenheit: float):
     return templates.TemplateResponse(request=request, name="sample.html", context=data.__dict__)
 
 
+@app.post("/test")
+def test(request: Request, data: WsbData ):
+    previewLink = f"{request.base_url}static/images/preview.png"
+    gptResponse = {
+        "sitePreviewUrl": previewLink, 
+        "trialSignUpUrl": "https://www.one.com/en/",
+    }
+    return gptResponse
