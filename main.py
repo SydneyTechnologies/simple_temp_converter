@@ -9,13 +9,11 @@ from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse, HTMLResponse, FileResponse
 
 
-
+static_dir = os.path.join(os.path.dirname(__file__), "static")
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
+app.mount("/static", StaticFiles(directory=static_dir), name="static")
 templates = Jinja2Templates(directory="templates")
 logging.basicConfig(level=logging.DEBUG)
-
-app = FastAPI()
 
 origins = [
     "*",
@@ -111,7 +109,28 @@ def get_report(request: Request, joke: str, celsius: float, fahrenheit: float):
 
 @app.post("/build")
 def test(request: Request, data: WsbData ):
-    previewLink = f"{request.base_url}static/images/preview.png"
+
+    mapping  = {
+    "cafe": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/Cafe.png",
+    "membership": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/Membership.png",
+    "portfolio": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/Portfolio.png",
+    "beauty": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/beauty.png",
+    "businessProf": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/businessProf.png",
+    "coaches": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/coaches.png",
+    "commercialrecreation": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/commercialRecreation.png",
+    "creativeProf": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/creativeProf.png",
+    "events": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/events.png",
+    "health": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/health.png",
+    "hotels": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/hotels.png",
+    "musician": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/musician.png",
+    "personalWebsite": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/personalWebsite.png",
+    "publicAreas": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/publicAreas.png",
+    "restaurants": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/restaurants.png",
+    "serviceProf": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/serviceProf.png",
+    "shops": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/shops.png"
+}
+
+    previewLink = mapping.get(data.concept)
     gptResponse = {
         "sitePreviewUrl": previewLink, 
         "trialSignUpUrl": "https://www.one.com/en/",
