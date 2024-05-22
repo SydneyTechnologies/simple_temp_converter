@@ -48,29 +48,6 @@
         "type": "object",
         "title": "HTTPValidationError"
       },
-      "Report": {
-        "properties": {
-          "joke": {
-            "type": "string",
-            "title": "Joke"
-          },
-          "image": {
-            "type": "string",
-            "title": "Image"
-          },
-          "celsius": {
-            "type": "number",
-            "title": "Celsius"
-          },
-          "fahrenheit": {
-            "type": "number",
-            "title": "Fahrenheit"
-          }
-        },
-        "type": "object",
-        "required": ["joke", "image", "celsius", "fahrenheit"],
-        "title": "Report"
-      },
       "ValidationError": {
         "properties": {
           "loc": {
@@ -120,7 +97,8 @@
           "defaultColor": {
             "type": "string",
             "title": "Defaultcolor",
-            "default": "rustic"
+            "default": "rustic",
+            "description": "The default color scheme for the website the only values allowed are rustic, modern, minimalist and classic and should be picked based on user input or the concept of the website"
           },
           "pronouns": {
             "type": "string",
