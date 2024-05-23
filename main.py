@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import RedirectResponse, HTMLResponse, FileResponse
+from uuid import uuid4
 
 
 static_dir = os.path.join(os.path.dirname(__file__), "static")
@@ -131,8 +132,9 @@ def test(request: Request, data: WsbData ):
 }
 
     previewLink = mapping.get(data.concept)
+    session_id = str(uuid4())
     gptResponse = {
         "sitePreviewUrl": previewLink, 
-        "trialSignUpUrl": "https://www.one.com/en/",
+        "trialSignUpUrl": f"https://try-websitebuilder.one.com/?session-id={session_id}",
     }
     return gptResponse
