@@ -130,7 +130,6 @@ def test(request: Request, data: WsbData ):
     "serviceProf": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/serviceProf.png",
     "shops": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/shops.png"
 }
-
     previewLink = mapping.get(data.concept)
     session_id = str(uuid4())
     gptResponse = {
