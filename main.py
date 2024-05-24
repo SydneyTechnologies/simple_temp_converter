@@ -129,19 +129,19 @@ def test(request: Request, data: WsbData ):
     "restaurants": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/restaurants.png",
     "serviceProf": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/serviceProf.png",
     "shops": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/shops.png",
-    "bars": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "servicesCatchall": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "projects": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "projectsCatchall": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "nonProfit": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "organizationCatchall": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "eventCatchall": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "onlineShopCatchall": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "physicalStoreCatchall": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "portfolioCatchall": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "personalWebsiteCatchall": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "commercialRecreation": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png",
-    "suppliers": "https://github.com/adakidpv/WSB-Templates-Trial/blob/main/EE.png"
+    "bars": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "servicesCatchall": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "projects": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "projectsCatchall": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "nonProfit": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "organizationCatchall": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "eventCatchall": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "onlineShopCatchall": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "physicalStoreCatchall": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "portfolioCatchall": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "personalWebsiteCatchall": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "commercialRecreation": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png",
+    "suppliers": "https://raw.githubusercontent.com/adakidpv/WSB-Templates-Trial/main/EE.png"
 }
     
 
